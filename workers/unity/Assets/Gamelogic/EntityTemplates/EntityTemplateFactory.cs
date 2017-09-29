@@ -19,17 +19,19 @@ namespace Assets.Gamelogic.EntityTemplates
         public static Entity CreatePlayerShipTemplate(string clientWorkerId, Vector3 initialPosition)
         {
             var playerEntityTemplate = EntityBuilder.Begin()
-              // Add components to the entity, then set the access permissions for the component on the entity relative to the client or server worker ids.
-              .AddPositionComponent(initialPosition, CommonRequirementSets.SpecificClientOnly(clientWorkerId))
-              .AddMetadataComponent(SimulationSettings.PlayerShipPrefabName)
-              .SetPersistence(false)
-              .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
-              .AddComponent(new Rotation.Data(0), CommonRequirementSets.SpecificClientOnly(clientWorkerId))
-              .AddComponent(new ClientConnection.Data(SimulationSettings.TotalHeartbeatsBeforeTimeout), CommonRequirementSets.PhysicsOnly)
-              .AddComponent(new ShipControls.Data(0, 0), CommonRequirementSets.SpecificClientOnly(clientWorkerId))
-              .AddComponent(new ClientAuthorityCheck.Data(), CommonRequirementSets.SpecificClientOnly(clientWorkerId))
-              .Build();
-
+                // Add components to the entity, then set the access permissions for the component on the entity relative to the client or server worker ids.
+                .AddPositionComponent(initialPosition, CommonRequirementSets.SpecificClientOnly(clientWorkerId))
+                .AddMetadataComponent(SimulationSettings.PlayerShipPrefabName)
+                .SetPersistence(false)
+                .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
+                .AddComponent(new Rotation.Data(0), CommonRequirementSets.SpecificClientOnly(clientWorkerId))
+                .AddComponent(new ClientConnection.Data(SimulationSettings.TotalHeartbeatsBeforeTimeout), CommonRequirementSets.PhysicsOnly)
+                .AddComponent(new ShipControls.Data(0, 0), CommonRequirementSets.SpecificClientOnly(clientWorkerId))
+                .AddComponent(new ClientAuthorityCheck.Data(), CommonRequirementSets.SpecificClientOnly(clientWorkerId))
+                .AddComponent(new Health.Data(1000), CommonRequirementSets.PhysicsOnly)
+                .AddComponent(new Score.Data(0), CommonRequirementSets.PhysicsOnly)
+                .Build();
+ 
             return playerEntityTemplate;
         }
 
@@ -37,13 +39,13 @@ namespace Assets.Gamelogic.EntityTemplates
         public static Entity CreatePlayerCreatorTemplate()
         {
             var playerCreatorEntityTemplate = EntityBuilder.Begin()
-              // Add components to the entity, then set the access permissions for the component on the entity relative to the client or server worker ids.
-              .AddPositionComponent(new Vector3(-5, 0, 0), CommonRequirementSets.PhysicsOnly)
-              .AddMetadataComponent(SimulationSettings.PlayerCreatorPrefabName)
-              .SetPersistence(true)
-              .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
-              .AddComponent(new PlayerCreation.Data(), CommonRequirementSets.PhysicsOnly)
-              .Build();
+                // Add components to the entity, then set the access permissions for the component on the entity relative to the client or server worker ids.
+                .AddPositionComponent(new Vector3(-5, 0, 0), CommonRequirementSets.PhysicsOnly)
+                .AddMetadataComponent(SimulationSettings.PlayerCreatorPrefabName)
+                .SetPersistence(true)
+                .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
+                .AddComponent(new PlayerCreation.Data(), CommonRequirementSets.PhysicsOnly)
+                .Build();
 
             return playerCreatorEntityTemplate;
         }
@@ -52,13 +54,13 @@ namespace Assets.Gamelogic.EntityTemplates
         static public Entity GenerateIslandEntityTemplate(Vector3 initialPosition, string prefabName)
         {
             var islandEntityTemplate = EntityBuilder.Begin()
-              // Add components to the entity, then set the access permissions for the component on the entity relative to the client or server worker ids.
-              .AddPositionComponent(initialPosition, CommonRequirementSets.PhysicsOnly)
-              .AddMetadataComponent(prefabName)
-              .SetPersistence(true)
-              .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
-              .AddComponent(new Rotation.Data(0), CommonRequirementSets.PhysicsOnly)
-              .Build();
+                // Add components to the entity, then set the access permissions for the component on the entity relative to the client or server worker ids.
+                .AddPositionComponent(initialPosition, CommonRequirementSets.PhysicsOnly)
+                .AddMetadataComponent(prefabName)
+                .SetPersistence(true)
+                .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
+                .AddComponent(new Rotation.Data(0), CommonRequirementSets.PhysicsOnly)
+                .Build();
 
             return islandEntityTemplate;
         }
@@ -67,13 +69,13 @@ namespace Assets.Gamelogic.EntityTemplates
         static public Entity GenerateSmallFishTemplate(Vector3 initialPosition)
         {
             var smallFishTemplate = EntityBuilder.Begin()
-              // Add components to the entity, then set the access permissions for the component on the entity relative to the client or server worker ids.
-              .AddPositionComponent(initialPosition, CommonRequirementSets.PhysicsOnly)
-              .AddMetadataComponent(SimulationSettings.SmallFishPrefabName)
-              .SetPersistence(true)
-              .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
-              .AddComponent(new Rotation.Data(0), CommonRequirementSets.PhysicsOnly)
-              .Build();
+                // Add components to the entity, then set the access permissions for the component on the entity relative to the client or server worker ids.
+                .AddPositionComponent(initialPosition, CommonRequirementSets.PhysicsOnly)
+                .AddMetadataComponent(SimulationSettings.SmallFishPrefabName)
+                .SetPersistence(true)
+                .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
+                .AddComponent(new Rotation.Data(0), CommonRequirementSets.PhysicsOnly)
+                .Build();
 
             return smallFishTemplate;
         }
@@ -82,15 +84,30 @@ namespace Assets.Gamelogic.EntityTemplates
         static public Entity GenerateLargeFishTemplate(Vector3 initialPosition)
         {
             var largeFishTemplate = EntityBuilder.Begin()
-              // Add components to the entity, then set the access permissions for the component on the entity relative to the client or server worker ids.
-              .AddPositionComponent(initialPosition, CommonRequirementSets.PhysicsOnly)
-              .AddMetadataComponent(SimulationSettings.LargeFishPrefabName)
-              .SetPersistence(true)
-              .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
-              .AddComponent(new Rotation.Data(0), CommonRequirementSets.PhysicsOnly)
-              .Build();
-            
+                // Add components to the entity, then set the access permissions for the component on the entity relative to the client or server worker ids.
+                .AddPositionComponent(initialPosition, CommonRequirementSets.PhysicsOnly)
+                .AddMetadataComponent(SimulationSettings.LargeFishPrefabName)
+                .SetPersistence(true)
+                .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
+                .AddComponent(new Rotation.Data(0), CommonRequirementSets.PhysicsOnly)
+                .Build();
+
             return largeFishTemplate;
+        }
+
+        public static Entity CreatePirateEntityTemplate(Vector3 initialPosition, uint initialRotation)
+        {
+            var pirateEntityTemplate = EntityBuilder.Begin()
+                .AddPositionComponent(initialPosition, CommonRequirementSets.PhysicsOnly)
+                .AddMetadataComponent(SimulationSettings.PirateShipPrefabName)
+                .SetPersistence(true)
+                .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
+                .AddComponent(new Rotation.Data(initialRotation), CommonRequirementSets.PhysicsOnly)
+                .AddComponent(new ShipControls.Data(0, 0), CommonRequirementSets.PhysicsOnly)
+                .AddComponent(new Health.Data(1000), CommonRequirementSets.PhysicsOnly)
+                .Build();
+
+            return pirateEntityTemplate;
         }
     }
 }

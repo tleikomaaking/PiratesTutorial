@@ -22,6 +22,7 @@ namespace Assets.Editor
             PopulateSnapshotWithIslandTerrainEntities(ref snapshotEntities, ref currentEntityId);
             PopulateSnapshotWithSmallFishGroups(ref snapshotEntities, ref currentEntityId);
             PopulateSnapshotWithLargeFish(ref snapshotEntities, ref currentEntityId);
+            PopulateSnapshotWithPirateEntities(ref snapshotEntities, ref currentEntityId);
 
             SaveSnapshot(snapshotEntities);
         }
@@ -57,6 +58,20 @@ namespace Assets.Editor
             foreach (var location in SimulationSettings.LargeFishStartingLocations)
             {
                 snapshotEntities.Add(new EntityId(nextAvailableId++), EntityTemplateFactory.GenerateLargeFishTemplate(location));
+            }
+        }
+        
+        public static void PopulateSnapshotWithPirateEntities(ref Dictionary<EntityId, Entity> snapshotEntities, ref int nextAvailableId)
+        {
+            for (var i = 0; i < SimulationSettings.TotalPirates; i++)
+            {
+                // Choose a starting position for this pirate entity
+                var pirateCoordinates = new Vector3((Random.value - 0.5f) * SimulationSettings.PiratesSpawnDiameter, 0,
+                    (Random.value - 0.5f) * SimulationSettings.PiratesSpawnDiameter);
+                var pirateRotation = System.Convert.ToUInt32(Random.value * 360);
+ 
+                snapshotEntities.Add(new EntityId(nextAvailableId++),
+                    EntityTemplateFactory.CreatePirateEntityTemplate(pirateCoordinates, pirateRotation));
             }
         }
 

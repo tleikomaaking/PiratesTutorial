@@ -18,7 +18,7 @@
             "--cachePath=.spatialos/schema_codegen_cache_std",
             "--output=.spatialos/generated/std",
             "--language=csharp",
-            "--input=../../build/dependencies/schema/WorkerSdkSchema"
+            "--input=../../build/dependencies/schema/standard_library"
           ]
         },
         {
@@ -41,7 +41,7 @@
             "--cachePath=.spatialos/schema_codegen_cache_json_std",
             "--output=.spatialos/json/std",
             "--language=ast_json",
-            "--input=../../build/dependencies/schema/WorkerSdkSchema"
+            "--input=../../build/dependencies/schema/standard_library"
           ]
         },
         {
@@ -76,6 +76,7 @@
           "arguments": [
             "invoke",
             "unity-csharp-compiler",
+            "--unity-reference=UnityEngine.dll",
             "--",
             "-lib:Assets/Improbable/Sdk/Dll",
             "-reference:protobuf-net.dll,Improbable.WorkerSdkCsharp.dll,Improbable.WorkerSdkCsharp.Framework.dll",

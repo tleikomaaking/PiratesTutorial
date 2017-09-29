@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 11426928}
   - component: {fileID: 114212193579419444}
   - component: {fileID: 114044228279781424}
+  - component: {fileID: 114903785286495984}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Untagged
@@ -167,6 +168,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &2397078
 MeshRenderer:
@@ -198,6 +200,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &3331058
 MeshFilter:
@@ -235,7 +238,7 @@ Light:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155304}
   m_Enabled: 1
-  serializedVersion: 7
+  serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 3.13
@@ -260,6 +263,8 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1.77
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!114 &11410120
@@ -285,6 +290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SinkingAnimation: {fileID: 111238256083466764}
+  ShipWashVfx: {fileID: 1664595458673832, guid: 5766b95d4aa685a44b45f5e733d02efb,
+    type: 2}
 --- !u!114 &11432558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -620,6 +627,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43e2ddcaec3d1bf4583c49a494523e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114903785286495984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e13587a71e3943b4bd696a6b427e83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &136369682879696712
