@@ -1,8 +1,8 @@
 {
-    "name": "your_project_name_here",
+    "name": "beta_eight_nine_988",
     "project_version": "1.0.0",
     "sdk_version": "11.1.1",
     "dependencies": [
-    	{"name": "standard_library", "version": "11.1.1"}
+        { "name": "standard_library", "version": "11.1.1" }
     ]
 }
